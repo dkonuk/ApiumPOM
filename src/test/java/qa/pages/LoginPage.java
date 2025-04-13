@@ -1,27 +1,22 @@
 package qa.pages;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import qa.BaseTest;
 
-public class LoginPage extends BaseTest {
-
-
+public class LoginPage extends BasePage  {
     @AndroidFindBy (accessibility = "container header") private WebElement containerheader;
     @AndroidFindBy (accessibility = "open menu") private WebElement openMenu;
-    @AndroidFindBy (accessibility = "loginButton") private WebElement loginButton;
+    @AndroidFindBy (accessibility = "menu item log in") private WebElement loginButton;
     @AndroidFindBy (accessibility = "Username input field") private WebElement usernamefield;
     @AndroidFindBy (accessibility = "Password input field") private WebElement passwordfield;
     @AndroidFindBy (accessibility = "Login button") private WebElement loginbutton;
 
-    public LoginPage() {
+    public LoginPage(AppiumDriver driver) {
         // Initialize elements using PageFactory
-        if (driver != null) {
-            PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-        } else {
-            throw new IllegalStateException("Driver not initialized. Check your BaseTest setup.");
-        }
+        super(driver);
     }
 
 
@@ -34,7 +29,7 @@ public class LoginPage extends BaseTest {
         return this;
     }
     public LoginPage pressloginpage() {
-        clickElement(openMenu);
+        clickElement(loginButton);
         return this;
     }
     public LoginPage enterUserName(String username) {
@@ -47,7 +42,7 @@ public class LoginPage extends BaseTest {
     }
     public MainPage clickLoginButton() {
         clickElement(loginbutton);
-        return new MainPage();
+        return new MainPage(driver);
     }
 }
 

@@ -6,8 +6,8 @@ import qa.pages.LoginPage;
 import qa.pages.MainPage;
 
 public class LoginTest extends BaseTest {
-    LoginPage loginPage;
-    MainPage mainPage;
+    private LoginPage loginPage;
+    private MainPage mainPage;
     @BeforeClass
     public void setup() {
 
@@ -18,7 +18,7 @@ public class LoginTest extends BaseTest {
     }
     @BeforeMethod
     public void beforeMethod() {
-        loginPage = new LoginPage();
+        loginPage = new LoginPage(driver);
 
     }
     @AfterMethod
@@ -28,6 +28,11 @@ public class LoginTest extends BaseTest {
     @Test
     public void testLogin() {
         loginPage.waitForVisibilityofmainpage();
+        loginPage.pressmenubutton();
+        loginPage.pressloginpage();
+        loginPage.enterUserName("admin");
+        loginPage.enterPassword("<PASSWORD>");
+        mainPage = loginPage.clickLoginButton();
 
 
     }
