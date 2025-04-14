@@ -26,13 +26,16 @@ public class LoginTest extends BaseTest {
 
     }
     @Test
-    public void testLogin() {
+    public void testSuccessfulLogin() {
         loginPage.waitForVisibilityofmainpage();
         loginPage.pressmenubutton();
         loginPage.pressloginpage();
-        loginPage.enterUserName("admin");
-        loginPage.enterPassword("<PASSWORD>");
+        loginPage.enterUserName("bob@example.com");
+        loginPage.enterPassword("10203040");
         mainPage = loginPage.clickLoginButton();
+        mainPage.waitForVisibilityofmainpage();
+        mainPage.clickStoreItem();
+
 
 
     }
