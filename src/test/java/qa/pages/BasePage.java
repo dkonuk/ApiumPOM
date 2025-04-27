@@ -42,6 +42,10 @@ public class BasePage {
         waitForVisibility(element);
         return element.getDomAttribute(attribute);
     }
+    protected void clearInputField(WebElement element) {
+        waitForVisibility(element);
+        element.clear();
+    }
 
 
 }

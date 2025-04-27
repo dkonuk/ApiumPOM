@@ -3,8 +3,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
-import qa.BaseTest;
+
 
 public class LoginPage extends BasePage  {
     @AndroidFindBy (accessibility = "container header") private WebElement containerheader;
@@ -43,6 +42,11 @@ public class LoginPage extends BasePage  {
     public MainPage clickLoginButton() {
         clickElement(loginbutton);
         return new MainPage(driver);
+    }
+    public LoginPage clearInputFields() {
+        clearInputField(usernamefield);
+        clearInputField(passwordfield);
+        return this;
     }
 }
 
